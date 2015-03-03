@@ -1,12 +1,11 @@
 #coding:utf-8
-import pygame, sys
+import pygame, sys, pygame.mixer
 from pygame.locals import *
 from random import randint
 
-
 wind_size = 568,500
-space = 150
-back = pygame.image.load('image/back-bee.png')
+space = 220
+back = pygame.image.load("image/back-bee.png")
 abelha = pygame.image.load("image/bee.png")
 
 
@@ -79,6 +78,7 @@ def main():
 
     #inicializa o pygame
     pygame.init()
+    som_abelha = pygame.mixer.Sound('Beep.wav')
     clock = pygame.time.Clock()
 
     
@@ -94,11 +94,10 @@ def main():
         if event.type == pygame.KEYDOWN: #decrementa a posicao para bola cair
             if event.key == pygame.K_UP:
                 velocidade_y = -10
-                
+                som_abelha.play()                
         if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
             if event.key == pygame.K_UP:
                 velocidade_y = 5
-                
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
@@ -134,7 +133,6 @@ def main():
         pygame.display.flip()
         clock.tick(60)
         pygame.display.update()                
-        
         
     pygame.quit()
     
