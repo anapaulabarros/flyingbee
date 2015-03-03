@@ -43,29 +43,29 @@ def main():
             if click_mouse[0] == 1:
                 script.main()    
                 sys.exit()
-            #screen.blit(btn_iniciar_h,(330,140))
-        #else:
-        #    screen.blit(btn_iniciar,(330,140))
+            screen.blit(btn_iniciar_h,(330,140))
+        else:
+            screen.blit(btn_iniciar,(330,140))
 
-        #if pos2[0] >= 372 and pos2[0] <= 475 and pos2[1] >= 195 and pos2[1] <= 216:
-        #    screen.blit(btn_ajuda_h,(325,185))
-        #else:
-        #    screen.blit(btn_ajuda,(325,185))
+        if pos2[0] >= 372 and pos2[0] <= 475 and pos2[1] >= 195 and pos2[1] <= 216:
+            screen.blit(btn_ajuda_h,(325,185))
+        else:
+            screen.blit(btn_ajuda,(325,185))
             
         if pos2[0] >= 373 and pos2[0] <= 472 and pos2[1] >= 240 and pos2[1] <= 273:
-            #screen.blit(btn_sobre_h,(320,232))
+            screen.blit(btn_sobre_h,(320,232))
             if click_mouse[0] == 1:
-                screen.blit(tela_sobre,(315,120))
-        print pygame.mouse.get_pos()
-        #else:
-        #    screen.blit(btn_sobre,(320,232))
+                btn_iniciar.convert_alpha()
+                screen.blit(tela_sobre,(0,0))
+        else:
+            screen.blit(btn_sobre,(320,232))
 
         if pos2[0] >= 387 and pos2[0] <= 451 and pos2[1] >= 286 and pos2[1] <= 308:
             if click_mouse[0] == 1:
                     done = True #sai do jogo
-         #   screen.blit(btn_sair_h,(320,275))
-        #else:
-        #    screen.blit(btn_sair,(320,275))    
+            screen.blit(btn_sair_h,(320,275))
+        else:
+            screen.blit(btn_sair,(320,275))    
                  
                 
         
