@@ -55,8 +55,7 @@ def main():
         if pos2[0] >= 373 and pos2[0] <= 472 and pos2[1] >= 240 and pos2[1] <= 273:
             screen.blit(btn_sobre_h,(320,232))
             if click_mouse[0] == 1:
-                btn_iniciar.convert_alpha()
-                screen.blit(tela_sobre,(0,0))
+                screen.blit(tela_sobre,(315,120))
         else:
             screen.blit(btn_sobre,(320,232))
 
@@ -66,9 +65,7 @@ def main():
             screen.blit(btn_sair_h,(320,275))
         else:
             screen.blit(btn_sair,(320,275))    
-                 
-                
-        
+          
 
         pygame.display.flip()
         clock.tick(60)
