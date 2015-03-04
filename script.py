@@ -57,7 +57,7 @@ def pontuacao(ponto, screen):
     font = pygame.font.Font("fonts/font2.ttf", 30)
     text = font.render(str(ponto), True, (0,0,0))
     screen.blit(text, [284,50])
-
+    
         
 #funcao principal
 def main():
@@ -78,7 +78,7 @@ def main():
 
     #inicializa o pygame
     pygame.init()
-    som_abelha = pygame.mixer.Sound('Beep.wav')
+    som_abelha = pygame.mixer.Sound('click.wav')
     clock = pygame.time.Clock()
 
     
@@ -94,7 +94,7 @@ def main():
         if event.type == pygame.KEYDOWN: #decrementa a posicao para bola cair
             if event.key == pygame.K_UP:
                 velocidade_y = -10
-                som_abelha.play()                
+                #som_abelha.play()                
         if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
             if event.key == pygame.K_UP:
                 velocidade_y = 5
@@ -104,7 +104,7 @@ def main():
         bee(x,y,screen) #carrega a bola
         pontuacao(ponto, screen) #pontuacao
 
-        if y >= ground: #verifica se a posicao Y da bola atingiu o chao
+        if y >= ground or y <= 0: #verifica se a posicao Y da bola atingiu o chao
             gameover(screen)
             velocidade_y = 0
             velo_obsctaculo = 0
