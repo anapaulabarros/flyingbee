@@ -58,6 +58,8 @@ def main():
             
         if pos2[0] >= 373 and pos2[0] <= 472 and pos2[1] >= 240 and pos2[1] <= 273:
             screen.blit(btn_sobre_h,(320,232))
+            if click_mouse[0] == 1:
+                tela.sobre()
 
         if pos2[0] >= 387 and pos2[0] <= 451 and pos2[1] >= 286 and pos2[1] <= 308:
             if click_mouse[0] == 1:
