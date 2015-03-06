@@ -2,9 +2,10 @@
 import pygame, sys, pygame.mixer
 from pygame.locals import *
 from random import randint
+import reinicio
 
 wind_size = 568,500
-space = 220
+space = 180
 back = pygame.image.load("image/back-bee.png")
 abelha = pygame.image.load("image/bee.png")
 
@@ -33,6 +34,7 @@ def gameover(screen):
     font = pygame.font.Font("fonts/font2.ttf", 30)
     mensagem = font.render('PERDEU  PLAYBOY!!!', True, (0,0,0))
     screen.blit(mensagem, [120,200])
+    reinicio.reinicio()    
 
 #funcao para desenhar e inserir os obstaculos na tela
 def obstaculos(xloc, yloc, xsize, ysize, screen):
@@ -78,6 +80,7 @@ def main():
 
     #inicializa o pygame
     pygame.init()
+    click_mouse = pygame.mouse.get_pressed()
     som_abelha = pygame.mixer.Sound('click.wav')
     clock = pygame.time.Clock()
 
