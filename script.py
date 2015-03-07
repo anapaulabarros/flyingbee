@@ -73,9 +73,9 @@ def main():
     ground = 400
     localizacao_x = 460
     localizacao_y = 0
+    velo_obsctaculo = 0
     tamanho_x = 70
     tamanho_y = randint(0,300)
-    velo_obsctaculo = 2.5
     ponto = 0
 
     #inicializa o pygame
@@ -88,6 +88,7 @@ def main():
     #configura o tamanho da tela do jogo
     screen = pygame.display.set_mode(wind_size)
     pygame.display.set_caption('Flying Bee')
+    
 
     #contole de execucao
     while not done:
@@ -95,11 +96,12 @@ def main():
             if event.type == pygame.QUIT:
                 done = True
         if event.type == pygame.KEYDOWN: #decrementa a posicao para bola cair
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_DOWN:
                 velocidade_y = -10
+                velo_obsctaculo = 2.5
                 #som_abelha.play()                
         if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_DOWN:
                 velocidade_y = 5
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
