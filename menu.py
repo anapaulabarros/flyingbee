@@ -66,9 +66,6 @@ def main():
                     done = True #sai do jogo
             screen.blit(btn_sair_h,(320,275))
 
-                 
-                
-        
 
         pygame.display.flip()
         clock.tick(60)

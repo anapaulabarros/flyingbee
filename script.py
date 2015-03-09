@@ -5,7 +5,7 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 180
+space = 190
 back = pygame.image.load("image/back-bee.png")
 abelha = pygame.image.load("image/bee.png")
 
@@ -70,7 +70,7 @@ def main():
     y = 230
     velocidade_x = 0
     velocidade_y = 0
-    ground = 400
+    ground = 480
     localizacao_x = 460
     localizacao_y = 0
     velo_obsctaculo = 0
@@ -81,7 +81,8 @@ def main():
     #inicializa o pygame
     pygame.init()
     click_mouse = pygame.mouse.get_pressed()
-    som_abelha = pygame.mixer.Sound('click.wav')
+    som_abelha = pygame.mixer.Sound('sons/jump.wav')
+    som_ponto = pygame.mixer.Sound('sons/yay.wav')
     clock = pygame.time.Clock()
 
     
@@ -108,7 +109,7 @@ def main():
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
         bee(x,y,screen) #carrega a bola
         pontuacao(ponto, screen) #pontuacao
-
+        
         if y >= ground or y <= 0: #verifica se a posicao Y da bola atingiu o chao
             gameover(screen)
             velocidade_y = 0
@@ -131,6 +132,7 @@ def main():
 
         if x > localizacao_x and x < localizacao_x + 4: # atualiza o contador de pontos a cada obstaculo ultrapassado        
             ponto += 1
+            som_ponto.play()
 
         y += velocidade_y # atualiza a posicao da bola
         localizacao_x -= velo_obsctaculo
