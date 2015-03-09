@@ -5,7 +5,7 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 190
+space = 170
 back = pygame.image.load("image/back-bee.png")
 abelha = pygame.image.load("image/bee.png")
 
@@ -25,15 +25,12 @@ orange = (255,187,0)
 brown = (143,71,0)
 
 
-#funcao para desenhar a bola na tela na posicao x,y
+#funcao para desenhar a abelha na tela na posicao x,y
 def bee(x,y,screen):
     screen.blit(abelha, [x,y])
 
 #funcao para informar fim de jogo
 def gameover(screen):
-    font = pygame.font.Font("fonts/font2.ttf", 30)
-    mensagem = font.render('PERDEU  PLAYBOY!!!', True, (0,0,0))
-    screen.blit(mensagem, [120,200])
     reinicio.reinicio()    
 
 #funcao para desenhar e inserir os obstaculos na tela
@@ -77,6 +74,7 @@ def main():
     tamanho_x = 70
     tamanho_y = randint(0,300)
     ponto = 0
+    grava_pontos = ''
 
     #inicializa o pygame
     pygame.init()
@@ -107,7 +105,7 @@ def main():
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
-        bee(x,y,screen) #carrega a bola
+        bee(x,y,screen) #carrega a abelha
         pontuacao(ponto, screen) #pontuacao
         
         if y >= ground or y <= 0: #verifica se a posicao Y da bola atingiu o chao
@@ -115,13 +113,13 @@ def main():
             velocidade_y = 0
             velo_obsctaculo = 0
             
-        #verifica se a bola bateu nos obstaculos 
+        #verifica se a abelha bateu nos obstaculos 
         if x + 20 > localizacao_x and y - 20 < tamanho_y and x - 15 < tamanho_x + localizacao_x:
             gameover(screen)
             velocidade_y = 0
             velo_obsctaculo = 0
             
-        #verifica se a bola bateu nos obstaculos
+        #verifica se a abelha bateu nos obstaculos
         if x + 20 > localizacao_x and y + 20 > tamanho_y + space and x - 15 < tamanho_x + localizacao_x:
             gameover(screen)
             velo_obsctaculo = 0
@@ -133,6 +131,7 @@ def main():
         if x > localizacao_x and x < localizacao_x + 4: # atualiza o contador de pontos a cada obstaculo ultrapassado        
             ponto += 1
             som_ponto.play()
+            grava_pontos = open("pontos.txt","w").write(str(ponto)) #grava pontuação da partida no arquivo
 
         y += velocidade_y # atualiza a posicao da bola
         localizacao_x -= velo_obsctaculo
