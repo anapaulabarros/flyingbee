@@ -107,7 +107,7 @@ def main():
                 #som_abelha.play()                
         if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
             if event.key == pygame.K_DOWN:
-                velocidade_y = 5
+                velocidade_y = 3
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
