@@ -7,7 +7,7 @@ import reinicio
 wind_size = 568,500
 space = 200
 back = pygame.image.load("image/back-bee.png")
-chao = pygame.image.load("image/ground.png")
+chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
 
 
@@ -73,7 +73,7 @@ def main():
     y = 230
     velocidade_x = 0
     velocidade_y = 0
-    ground = 480
+    ground = 425
     localizacao_x = 460
     localizacao_y = 0
     velo_obsctaculo = 0
@@ -112,7 +112,7 @@ def main():
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
         bee(x,y,screen) #carrega a abelha
-        screen.blit(chao, (0,0))
+        screen.blit(chao, (0,450))
         pontuacao(ponto, screen) #pontuacao
         
         
