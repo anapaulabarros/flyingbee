@@ -13,7 +13,7 @@ pos2 = []
 pygame.init()
 
 def reinicio():
-    
+    zera_pontos = ''
     pos2 = list((pygame.mouse.get_pos()))
     click_mouse = pygame.mouse.get_pressed()
     screen.blit(back, (0,0))
@@ -28,6 +28,7 @@ def reinicio():
 
     if pos2[0] >= 281 and pos2[0] <= 437 and pos2[1] >= 187 and pos2[1] <= 269:
         if click_mouse[0] == 1:
+            zera_pontos = open("pontos.txt","w").write(str(0)) #zera a ultima pontuação
             script.main()
             sys.exit()
 
