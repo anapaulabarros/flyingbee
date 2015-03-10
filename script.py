@@ -73,7 +73,7 @@ def main():
     y = 230
     velocidade_x = 0
     velocidade_y = 0
-    ground = 425
+    ground = 440
     localizacao_x = 460
     localizacao_y = 0
     velo_obsctaculo = 0
@@ -112,7 +112,7 @@ def main():
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
         bee(x,y,screen) #carrega a abelha
-        screen.blit(chao, (0,450)) #blita o chao do cenário
+        screen.blit(chao, (0,465)) #blita o chao do cenário
         pontuacao(ponto, screen) #pontuacao
         
         
