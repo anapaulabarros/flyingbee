@@ -7,6 +7,7 @@ import reinicio
 wind_size = 568,500
 space = 200
 back = pygame.image.load("image/back-bee.png")
+chao = pygame.image.load("image/ground.png")
 abelha = pygame.image.load("image/bee.png")
 
 
@@ -110,7 +111,8 @@ def main():
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
-        bee(x,y,screen) #carrega a abelha    
+        bee(x,y,screen) #carrega a abelha
+        screen.blit(chao, (0,0))
         pontuacao(ponto, screen) #pontuacao
         
         
