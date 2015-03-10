@@ -6,7 +6,7 @@ import reinicio
 
 wind_size = 568,500
 space = 200
-back = pygame.image.load("image/back-bee.png")
+back = pygame.image.load("image/bee_final.png")
 chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
 
@@ -103,7 +103,7 @@ def main():
         if event.type == pygame.KEYDOWN: #decrementa a posicao para bola cair
             if event.key == pygame.K_DOWN:
                 velocidade_y = -10
-                velo_obsctaculo = 2.5
+                velo_obsctaculo = 3.0
                 #som_abelha.play()                
         if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
             if event.key == pygame.K_DOWN:
