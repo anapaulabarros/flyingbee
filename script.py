@@ -5,7 +5,7 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 170
+space = 200
 back = pygame.image.load("image/back-bee.png")
 abelha = pygame.image.load("image/bee.png")
 
@@ -49,7 +49,12 @@ def obstaculos(xloc, yloc, xsize, ysize, screen):
     pygame.draw.rect(screen, grey2, [xloc+49, yloc+ysize+space, 7, ysize+500])
     pygame.draw.rect(screen, green2, [xloc, yloc+ysize+space, 7, ysize+500])
     pygame.draw.rect(screen, green3, [xloc+7, yloc+ysize+space, 7, ysize+500])
-   
+
+
+#funcao para blitar o pote de mel
+def bonus_extras(x,y,screen):
+    screen.blit(pote_mel, [x,y])
+    #pygame.draw.rect(screen, green, [xloc, yloc, xsize, ysize])   
 
 #funcao para marcar a pontuacao
 def pontuacao(ponto, screen):
@@ -105,8 +110,9 @@ def main():
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
-        bee(x,y,screen) #carrega a abelha
+        bee(x,y,screen) #carrega a abelha    
         pontuacao(ponto, screen) #pontuacao
+        
         
         if y >= ground or y <= 0: #verifica se a posicao Y da bola atingiu o chao
             gameover(screen)
@@ -128,6 +134,7 @@ def main():
             localizacao_x = 400 #era 700
             tamanho_y = randint(0,300)    
 
+        #print localizacao_x, localizacao_y
         if x > localizacao_x and x < localizacao_x + 4: # atualiza o contador de pontos a cada obstaculo ultrapassado        
             ponto += 1
             som_ponto.play()
