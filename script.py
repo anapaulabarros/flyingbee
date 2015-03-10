@@ -5,7 +5,7 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 200
+space = 140
 back = pygame.image.load("image/bee_final.png")
 chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
@@ -36,7 +36,6 @@ def gameover(screen):
 
 #funcao para desenhar e inserir os obstaculos na tela
 def obstaculos(xloc, yloc, xsize, ysize, screen):
-    
     pygame.draw.rect(screen, green, [xloc, yloc, xsize, ysize])
     pygame.draw.rect(screen, green, [xloc, yloc+ysize+space, xsize, ysize+500])
     pygame.draw.rect(screen, black, [xloc+63, yloc, 7, ysize])
