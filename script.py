@@ -112,7 +112,7 @@ def main():
             screen.blit(back, (i,0))
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
         bee(x,y,screen) #carrega a abelha
-        screen.blit(chao, (0,450))
+        screen.blit(chao, (0,450)) #blita o chao do cenário
         pontuacao(ponto, screen) #pontuacao
         
         
