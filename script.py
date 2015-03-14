@@ -5,7 +5,7 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 140
+space = 130
 back = pygame.image.load("image/back-bee-nuvem.jpg")
 chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
@@ -50,12 +50,7 @@ def obstaculos(xloc, yloc, xsize, ysize, screen):
     pygame.draw.rect(screen, green2, [xloc, yloc+ysize+space, 7, ysize+500])
     pygame.draw.rect(screen, green3, [xloc+7, yloc+ysize+space, 7, ysize+500])
 
-
-#funcao para blitar o pote de mel
-def bonus_extras(x,y,screen):
-    screen.blit(pote_mel, [x,y])
-    #pygame.draw.rect(screen, green, [xloc, yloc, xsize, ysize])   
-
+ 
 #funcao para marcar a pontuacao
 def pontuacao(ponto, screen):
     font = pygame.font.Font("fonts/font2.ttf", 30)
@@ -73,7 +68,7 @@ def main():
     velocidade_x = 0
     velocidade_y = 0
     ground = 440
-    localizacao_x = 460
+    localizacao_x = 450
     localizacao_y = 0
     velo_obsctaculo = 0
     tamanho_x = 70
@@ -121,24 +116,25 @@ def main():
             velo_obsctaculo = 0
             
         #verifica se a abelha bateu nos obstaculos 
-        if x + 20 > localizacao_x and y - 20 < tamanho_y and x - 15 < tamanho_x + localizacao_x:
+        if x + 13 > localizacao_x and y - 13 < tamanho_y and x - 8 < tamanho_x + localizacao_x:
             gameover(screen)
             velocidade_y = 0
             velo_obsctaculo = 0
             
         #verifica se a abelha bateu nos obstaculos
-        if x + 20 > localizacao_x and y + 20 > tamanho_y + space and x - 15 < tamanho_x + localizacao_x:
+        if x + 13 > localizacao_x and y + 13 > tamanho_y + space and x - 8 < tamanho_x + localizacao_x:
             gameover(screen)
             velo_obsctaculo = 0
             velocidade_y = 0
             
         if localizacao_x < -80:
-            localizacao_x = 400 #era 700
+            localizacao_x = 450 #era 700
             tamanho_y = randint(0,300)    
 
         #print localizacao_x, localizacao_y
         if x > localizacao_x and x < localizacao_x + 4: # atualiza o contador de pontos a cada obstaculo ultrapassado        
             ponto += 1
+            velo_obsctaculo += 0.03
             som_ponto.play()
             grava_pontos = open("pontos.txt","w").write(str(ponto)) #grava pontuação da partida no arquivo
 
