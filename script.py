@@ -5,8 +5,8 @@ from random import randint
 import reinicio
 
 wind_size = 568,500
-space = 130
-back = pygame.image.load("image/back-bee-nuvem.jpg")
+space = 140
+back = pygame.image.load("image/bee_final.png")
 chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
 
@@ -50,7 +50,7 @@ def obstaculos(xloc, yloc, xsize, ysize, screen):
     pygame.draw.rect(screen, green2, [xloc, yloc+ysize+space, 7, ysize+500])
     pygame.draw.rect(screen, green3, [xloc+7, yloc+ysize+space, 7, ysize+500])
 
- 
+
 #funcao para marcar a pontuacao
 def pontuacao(ponto, screen):
     font = pygame.font.Font("fonts/font2.ttf", 30)
@@ -68,7 +68,7 @@ def main():
     velocidade_x = 0
     velocidade_y = 0
     ground = 440
-    localizacao_x = 450
+    localizacao_x = 500
     localizacao_y = 0
     velo_obsctaculo = 0
     tamanho_x = 70
@@ -79,7 +79,6 @@ def main():
     #inicializa o pygame
     pygame.init()
     click_mouse = pygame.mouse.get_pressed()
-    som_abelha = pygame.mixer.Sound('sons/jump.wav')
     som_ponto = pygame.mixer.Sound('sons/yay.wav')
     clock = pygame.time.Clock()
 
@@ -94,53 +93,52 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-        if event.type == pygame.KEYDOWN: #decrementa a posicao para bola cair
+        if event.type == pygame.KEYDOWN: #decrementa a posicao para abelha cair
             if event.key == pygame.K_DOWN:
                 velocidade_y = -10
                 velo_obsctaculo = 3.0
-                #som_abelha.play()                
-        if event.type == pygame.KEYUP: #incrementa a posicao para bola subir
+        if event.type == pygame.KEYUP: #incrementa a posicao para abelha subir
             if event.key == pygame.K_DOWN:
                 velocidade_y = 3
         for i in (0, 568 / 2): #carrega o background e repete a imagem até completar o tamanho da tela
             screen.blit(back, (i,0))
+
         obstaculos(localizacao_x, localizacao_y, tamanho_x, tamanho_y, screen) #carrega os obstaculos na tela    
         bee(x,y,screen) #carrega a abelha
         screen.blit(chao, (0,465)) #blita o chao do cenário
         pontuacao(ponto, screen) #pontuacao
         
         
-        if y >= ground or y <= 0: #verifica se a posicao Y da bola atingiu o chao
+        if y >= ground or y <= 0: #verifica se a posicao Y da abelha atingiu o chao
             gameover(screen)
             velocidade_y = 0
             velo_obsctaculo = 0
             
         #verifica se a abelha bateu nos obstaculos 
-        if x + 13 > localizacao_x and y - 13 < tamanho_y and x - 8 < tamanho_x + localizacao_x:
+        if x > localizacao_x and y < tamanho_y and x < tamanho_x + localizacao_x:
             gameover(screen)
             velocidade_y = 0
             velo_obsctaculo = 0
             
         #verifica se a abelha bateu nos obstaculos
-        if x + 13 > localizacao_x and y + 13 > tamanho_y + space and x - 8 < tamanho_x + localizacao_x:
+        if x > localizacao_x and y > tamanho_y + space and x < tamanho_x + localizacao_x:
             gameover(screen)
             velo_obsctaculo = 0
             velocidade_y = 0
-            
-        if localizacao_x < -80:
-            localizacao_x = 450 #era 700
+        if localizacao_x < -70:
+            localizacao_x = 500 #era 700
             tamanho_y = randint(0,300)    
 
         #print localizacao_x, localizacao_y
-        if x > localizacao_x and x < localizacao_x + 4: # atualiza o contador de pontos a cada obstaculo ultrapassado        
+        if x > localizacao_x and x < localizacao_x + 4 and y > tamanho_y and y < tamanho_y + space: # atualiza o contador de pontos a cada obstaculo ultrapassado        
             ponto += 1
             velo_obsctaculo += 0.03
             som_ponto.play()
             grava_pontos = open("pontos.txt","w").write(str(ponto)) #grava pontuação da partida no arquivo
 
-        y += velocidade_y # atualiza a posicao da bola
+        y += velocidade_y # atualiza a posicao da abelha
         localizacao_x -= velo_obsctaculo
-        
+
         pygame.display.flip()
         clock.tick(60)
         pygame.display.update()                
