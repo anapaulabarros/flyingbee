@@ -6,7 +6,7 @@ import reinicio
 
 wind_size = 568,500
 space = 140
-back = pygame.image.load("image/bee_final.png")
+back = pygame.image.load("image/back-bee-nuvem.jpg")
 chao = pygame.image.load("image/chao.jpg")
 abelha = pygame.image.load("image/bee.png")
 
